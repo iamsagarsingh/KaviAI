@@ -33,6 +33,6 @@ def fetch_and_store():
 def start_scheduler():
     """Start the scheduler."""
     scheduler = BackgroundScheduler()
-    scheduler.add_job(fetch_and_store, IntervalTrigger(minutes=2))
+    scheduler.add_job(fetch_and_store, IntervalTrigger(hours=2))
     scheduler.start()
     print("schedular activated....")
