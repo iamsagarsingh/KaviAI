@@ -1,0 +1,9 @@
+# Ignore sensitive files
+config_template.py
+__pycache__/
+*.sqlite3
+*.db
+.env
+.venv/
+routers/
+test/
