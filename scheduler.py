@@ -17,7 +17,7 @@ def fetch_and_store():
                     contents=GenAIPrompt,)
         
         jsonData = json.loads(response.text[8:-4])
-        
+
         data = {"kavitaText":jsonData['text']}
         post_response = requests.post(FASTAPI_POST_URL,json=data)
 
@@ -33,6 +33,6 @@ def fetch_and_store():
 def start_scheduler():
     """Start the scheduler."""
     scheduler = BackgroundScheduler()
-    scheduler.add_job(fetch_and_store, IntervalTrigger(hours=4))
+    scheduler.add_job(fetch_and_store, IntervalTrigger(hours=2))
     scheduler.start()
     print("schedular activated....")
