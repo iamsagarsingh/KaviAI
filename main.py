@@ -8,6 +8,7 @@ from database import engine,sessionLocal
 from typing import Annotated
 from pydantic import BaseModel, Field
 from datetime import datetime
+from fastapi.middleware.cors import CORSMiddleware
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -23,6 +24,14 @@ db_dependency = Annotated[Session,Depends(get_db)]
 
 app = FastAPI()
 start_scheduler()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],    # Allows all origins; replace with specific origins for security
+    allow_credentials=True,
+    allow_methods=["*"],    # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],    # Allows all headers
+)
 
 class DataRequest(BaseModel):
     kavitaText:str = Field(min_length=3)
