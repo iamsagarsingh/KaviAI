@@ -10,7 +10,7 @@ def fetch_and_store():
     try:
         client = genai.Client(api_key=GenAIKey)
 
-        GenAIPrompt="""Give me one 4 to 6 line in hinglish Kavita or poem or shayri that should be unique and in json format. for example the json format: {id:"",text:""}"""
+        GenAIPrompt="""Give me one shayri or a quote. The quote should be in proper english and the shayri should be in hindi and it should be unique and in json format. for example the json format: {id:"",text:""}"""
 
         response = client.models.generate_content(
                     model="gemini-2.0-flash",
